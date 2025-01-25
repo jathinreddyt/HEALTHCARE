@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Assistance - Home</title>
+    <style>
+        /* General page styles */
+        body {
+            background-color: #f4f7f5;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-image: url("i.jpg");
+            color: white;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #2cc12c;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Health Monitoring Section */
+        .health-monitoring {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .health-monitoring h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .health-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .metric-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .metric-card h3 {
+            color: #4CAF50;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .metric-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        /* Chatbot styles */
+        #chatbot {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+        }
+
+        #chatbot-messages {
+            padding: 15px;
+            height: 380px;
+            overflow-y: auto;
+            flex-grow: 1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        #chatbot-input {
+            border-top: 1px solid #ccc;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #chatbot-input textarea {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        #chatbot-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 15%;
+        }
+
+        #chatbot-button:hover {
+            background-color: #45a049;
+        }
+
+        #chatbot-toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 40px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #chatbot-toggle-button:hover {
+            background-color: #004494;
+        }
+
+        .bot-message {
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .user-message {
+            background-color: #d1c4e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1>AI Health Assistance System</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="appointment.html">Appointment</a></li>
+                    <li><a href="diet-plan.html">Diet-plan</a></li>
+                    <li><a href="set-remainder.html">Set Reminders</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="health-monitoring">
+                <h2>Health Monitoring</h2>
+                <div class="health-metrics">
+                    <div class="metric-card">
+                        <h3>SpO₂ Levels</h3>
+                        <p class="value">95%</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Blood Pressure</h3>
+                        <p class="value">120/80 mmHg</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Heart Rate</h3>
+                        <p class="value">72 bpm</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Body Temperature</h3>
+                        <p class="value">98.6°F</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature">
+                    <h3>AI Assistance</h3>
+                    <p>Get personalized health tips and diet plans.</p>
+                </div>
+                <div class="feature">
+                    <h3>Schedule & Reminders</h3>
+                    <p>Never miss an appointment or medication.</p>
+                </div>
+                <div class="feature">
+                    <h3>Emergency Assistance</h3>
+                    <p>Quick help during emergencies.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AI Health Assistance. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot">
+        <div id="chatbot-header">Health Chatbot</div>
+        <div id="chatbot-messages">
+            <p class="bot-message">Hello! I am here to help you with basic medicines. Please tell me your symptoms.</p>
+        </div>
+        <div id="chatbot-input">
+            <textarea id="user-input" rows="1" placeholder="Enter your symptoms..."></textarea>
+            <button id="chatbot-button">Send</button>
+        </div>
+    </div>
+    <button id="chatbot-toggle-button">💬</button>
+
+    <script>
+        const chatbot = document.getElementById('chatbot');
+        const toggleButton = document.getElementById('chatbot-toggle-button');
+        const messages = document.getElementById('chatbot-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('chatbot-button');
+
+        // Symptom-medicine mapping
+        const symptomsToMedicines = {
+            cold: "Paracetamol or Cetirizine",
+            headache: "Ibuprofen or Aspirin",
+            fever: "Paracetamol or Tylenol",
+            "stomach pain": "Antacid or Buscopan",
+            allergy: "Loratadine or Cetirizine"
+        };
+
+        // Toggle chatbot visibility
+        toggleButton.addEventListener('click', () => {
+            chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
+        });
+
+        // Handle sending user input
+        sendButton.addEventListener('click', () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                // Display user's message
+                const userMessageElement = document.createElement('p');
+                userMessageElement.classList.add('user-message');
+                userMessageElement.textContent = userMessage;
+                messages.appendChild(userMessageElement);
+
+                // Find a response
+                let response = "I'm sorry, I don't recognize those symptoms. Please try again.";
+                for (const symptom in symptomsToMedicines) {
+                    if (userMessage.toLowerCase().includes(symptom)) {
+                        response = `💊 Recommended medicine for ${symptom}: ${symptomsToMedicines[symptom]}`;
+                        break;
+                    }
+                }
+
+                // Display bot's response
+                const botMessageElement = document.createElement('p');
+                botMessageElement.classList.add('bot-message');
+                botMessageElement.textContent = response;
+                messages.appendChild(botMessageElement);
+
+                // Scroll to the bottom
+                messages.scrollTop = messages.scrollHeight;
+
+                // Clear user input
+                userInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
