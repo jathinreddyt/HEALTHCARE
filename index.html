@@ -1,196 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Health Assistance - Home</title>
-    <style>
-        /* Existing Styles */
-        /* (Same as the previous CSS) */
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Health Assistance - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f9fb;
+      color: #333;
+    }
+
+    header {
+      background-image: url(i.jpg);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid white;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: white;
+      color: #4a90e2;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000000;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* Chatbot Styles */
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    #chatbot-header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      font-weight: bold;
+    }
+
+    #chatbot-messages {
+      padding: 1rem;
+      height: 200px;
+      overflow-y: auto;
+    }
+
+    .bot-message, .user-message {
+      margin: 0.5rem 0;
+    }
+
+    .bot-message {
+      color: #4a90e2;
+    }
+
+    .user-message {
+      color: #222;
+      font-weight: bold;
+    }
+
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #user-input {
+      flex-grow: 1;
+      border: none;
+      padding: 0.5rem;
+      resize: none;
+    }
+
+    #chatbot-button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    #chatbot-toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 24px;
+      padding: 0.6rem 1rem;
+      border-radius: 50%;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
 </head>
 <body>
-    <div class="content-wrapper">
-        <header>
-            <h1>AI Health Assistance System</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="appointment.html">Appointment</a></li>
-                    <li><a href="diet-plan.html">Diet-plan</a></li>
-                    <li><a href="set-remainder.html">Set Reminders</a></li>
-                    <li><a href="schedule.html">Schedule</a></li>
-                    <li><a href="emergency.html">Emergency</a></li>
-                    <li><a href="feedback.html">Feedback</a></li>
-                </ul>
-            </nav>
-        </header>
+  <div class="content-wrapper">
+    <header>
+      <h1>AI Health Assistance System</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="appointment.html">Appointment</a></li>
+          <li><a href="diet-plan.html">Diet-plan</a></li>
+          <li><a href="set-remainder.html">Set Reminders</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="emergency.html">Emergency</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <main>
-            <section class="health-monitoring">
-                <h2>Health Monitoring</h2>
-                <div class="health-metrics">
-                    <div class="metric-card">
-                        <h3>SpO₂ Levels</h3>
-                        <p class="value">--%</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>Blood Pressure</h3>
-                        <p class="value">--mmHg</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>Heart Rate</h3>
-                        <p class="value">--bpm</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>Body Temperature</h3>
-                        <p class="value">--F</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="features">
-                <div class="feature">
-                    <h3>AI Assistance</h3>
-                    <p>Get personalized health tips and diet plans.</p>
-                </div>
-                <div class="feature">
-                    <h3>Schedule & Reminders</h3>
-                    <p>Never miss an appointment or medication.</p>
-                </div>
-                <div class="feature">
-                    <h3>Emergency Assistance</h3>
-                    <p>Quick help during emergencies.</p>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 AI Health Assistance. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Chatbot -->
-    <div id="chatbot">
-        <div id="chatbot-header">Health Chatbot</div>
-        <div id="chatbot-messages">
-            <p class="bot-message">Hello! I am here to help you with basic medicines. Please tell me your age.</p>
+    <main>
+      <section class="features">
+        <div class="feature">
+          <h3>AI Assistance</h3>
+          <p>Get personalized health tips and diet plans.</p>
         </div>
-        <div id="chatbot-input">
-            <textarea id="user-input" rows="1" placeholder="Enter your age..."></textarea>
-            <button id="chatbot-button">Send</button>
+        <div class="feature">
+          <h3>Schedule & Reminders</h3>
+          <p>Never miss an appointment or medication.</p>
         </div>
+        <div class="feature">
+          <h3>Emergency Assistance</h3>
+          <p>Quick help during emergencies.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 AI Health Assistance. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Chatbot -->
+  <div id="chatbot">
+    <div id="chatbot-header">Health Chatbot</div>
+    <div id="chatbot-messages">
+      <p class="bot-message">Hello! I am here to help you with basic medicines. Please tell me your age.</p>
     </div>
-    <button id="chatbot-toggle-button">💬</button>
+    <div id="chatbot-input">
+      <textarea id="user-input" rows="1" placeholder="Type here..."></textarea>
+      <button id="chatbot-button">Send</button>
+    </div>
+  </div>
+  <button id="chatbot-toggle-button">💬</button>
 
-    <script>
-        const chatbot = document.getElementById('chatbot');
-        const toggleButton = document.getElementById('chatbot-toggle-button');
-        const messages = document.getElementById('chatbot-messages');
-        const userInput = document.getElementById('user-input');
-        const sendButton = document.getElementById('chatbot-button');
+  <script>
+    const chatbot = document.getElementById('chatbot');
+    const toggleButton = document.getElementById('chatbot-toggle-button');
+    const messages = document.getElementById('chatbot-messages');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('chatbot-button');
 
-        // Symptom-medicine mapping with age considerations
-        const symptomsToMedicines = {
-            cold: {
-                adult: "Paracetamol or Cetirizine",
-                child: "Acetaminophen or Diphenhydramine"
-            },
-            headache: {
-                adult: "Ibuprofen or Aspirin",
-                child: "Acetaminophen"
-            },
-            fever: {
-                adult: "Paracetamol or Tylenol",
-                child: "Acetaminophen"
-            },
-            "stomach pain": {
-                adult: "Antacid or Buscopan",
-                child: "Simethicone"
-            },
-            allergy: {
-                adult: "Loratadine or Cetirizine",
-                child: "Diphenhydramine"
-            },
-            cough: {
-                adult: "Dextromethorphan or Codeine",
-                child: "Honey and Lemon"
-            },
-            diarrhea: {
-                adult: "Loperamide",
-                child: "Oral rehydration solution"
-            },
-            nausea: {
-                adult: "Ondansetron",
-                child: "Dimenhydrinate"
-            },
-            chest_pain: {
-                adult: "Nitroglycerin or Aspirin",
-                child: "Emergency help required"
-            },
-            fatigue: {
-                adult: "B Vitamins or Iron supplements",
-                child: "Vitamin C"
-            }
-        };
+    let userAge = null;
 
-        // Function to give medicine usage schedule
-        const medicineSchedule = (medicine, age) => {
-            if (age < 18) {
-                return `Recommended medicine for children: ${medicine} (Take 1 dose every 4 hours if necessary.)`;
-            } else {
-                return `Recommended medicine for adults: ${medicine} (Take 1 dose every 6 hours if necessary.)`;
-            }
-        };
+    const symptomsToMedicines = {
+      cold: { adult: "Paracetamol or Cetirizine", child: "Acetaminophen or Diphenhydramine" },
+      headache: { adult: "Ibuprofen or Aspirin", child: "Acetaminophen" },
+      fever: { adult: "Paracetamol or Tylenol", child: "Acetaminophen" },
+      "stomach pain": { adult: "Antacid or Buscopan", child: "Simethicone" },
+      allergy: { adult: "Loratadine or Cetirizine", child: "Diphenhydramine" },
+      cough: { adult: "Dextromethorphan or Codeine", child: "Honey and Lemon" },
+      diarrhea: { adult: "Loperamide", child: "Oral rehydration solution" },
+      nausea: { adult: "Ondansetron", child: "Dimenhydrinate" },
+      chest_pain: { adult: "Nitroglycerin or Aspirin", child: "Emergency help required" },
+      fatigue: { adult: "B Vitamins or Iron supplements", child: "Vitamin C" }
+    };
 
-        // Toggle chatbot visibility
-        toggleButton.addEventListener('click', () => {
-            chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
-        });
+    const medicineSchedule = (medicine, age) => {
+      if (age < 18) {
+        return `Recommended for children: ${medicine} (1 dose every 4 hours if necessary.)`;
+      } else {
+        return `Recommended for adults: ${medicine} (1 dose every 6 hours if necessary.)`;
+      }
+    };
 
-        // Handle sending user input
-        sendButton.addEventListener('click', () => {
-            const userMessage = userInput.value.trim();
-            if (userMessage) {
-                // Display user's message
-                const userMessageElement = document.createElement('p');
-                userMessageElement.classList.add('user-message');
-                userMessageElement.textContent = userMessage;
-                messages.appendChild(userMessageElement);
+    toggleButton.addEventListener('click', () => {
+      chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
+    });
 
-                // Ask for detailed symptoms after age
-                if (userMessage.match(/^\d+$/)) {
-                    // Assuming age is input
-                    const age = parseInt(userMessage);
-                    const ageGroup = age < 18 ? 'child' : 'adult';
-                    messages.innerHTML = `<p class="bot-message">Thank you! Please describe your symptoms in more detail (e.g., headache, fever, stomach pain, etc.).</p>`;
-                    userInput.value = '';
-                    return;
-                }
+    sendButton.addEventListener('click', () => {
+      const userMessage = userInput.value.trim();
+      if (!userMessage) return;
 
-                // Find a response based on symptoms
-                let response = "I'm sorry, I don't recognize those symptoms. Please try again.";
-                for (const symptom in symptomsToMedicines) {
-                    if (userMessage.toLowerCase().includes(symptom)) {
-                        const medicine = symptomsToMedicines[symptom];
-                        response = `💊 Recommended medicine: ${medicine.adult} (for adults). ${medicineSchedule(medicine.adult, 25)}`;
-                        break;
-                    }
-                }
+      const userMessageElement = document.createElement('p');
+      userMessageElement.classList.add('user-message');
+      userMessageElement.textContent = userMessage;
+      messages.appendChild(userMessageElement);
 
-                // Display bot's response
-                const botMessageElement = document.createElement('p');
-                botMessageElement.classList.add('bot-message');
-                botMessageElement.textContent = response;
-                messages.appendChild(botMessageElement);
+      let response = "";
 
-                // Scroll to the bottom
-                messages.scrollTop = messages.scrollHeight;
+      if (!userAge && /^\d+$/.test(userMessage)) {
+        userAge = parseInt(userMessage);
+        response = "Thank you! Please describe your symptoms (e.g., headache, fever, cough, etc.).";
+      } else if (userAge !== null) {
+        const ageGroup = userAge < 18 ? 'child' : 'adult';
+        let found = false;
+        for (const symptom in symptomsToMedicines) {
+          if (userMessage.toLowerCase().includes(symptom)) {
+            const medicine = symptomsToMedicines[symptom][ageGroup];
+            response = `💊 ${medicineSchedule(medicine, userAge)}`;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          response = "Sorry, I couldn't identify your symptoms. Please try again with keywords like fever, cough, headache, etc.";
+        }
+      } else {
+        response = "Please enter your age first.";
+      }
 
-                // Clear user input
-                userInput.value = '';
-            }
-        });
-    </script>
+      const botMessageElement = document.createElement('p');
+      botMessageElement.classList.add('bot-message');
+      botMessageElement.textContent = response;
+      messages.appendChild(botMessageElement);
+
+      messages.scrollTop = messages.scrollHeight;
+      userInput.value = '';
+    });
+  </script>
 </body>
 </html>
