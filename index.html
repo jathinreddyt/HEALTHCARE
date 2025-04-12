@@ -1,88 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Diet Planner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f7fa;
-        }
-        header {
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .cta-button {
-            background: #6e8efb;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Health Assistance - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f9fb;
+      color: #333;
+    }
+
+    header {
+      background-image: url(i.jpg);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid white;
+      border-radius: 4px;
+    }
+
+    nav ul li a:hover {
+      background-color: white;
+      color: #4a90e2;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .feature {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000000;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* Chatbot Styles */
+    #chatbot {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    #chatbot-header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      font-weight: bold;
+    }
+
+    #chatbot-messages {
+      padding: 1rem;
+      height: 200px;
+      overflow-y: auto;
+    }
+
+    .bot-message, .user-message {
+      margin: 0.5rem 0;
+    }
+
+    .bot-message {
+      color: #4a90e2;
+    }
+
+    .user-message {
+      color: #222;
+      font-weight: bold;
+    }
+
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #user-input {
+      flex-grow: 1;
+      border: none;
+      padding: 0.5rem;
+      resize: none;
+    }
+
+    #chatbot-button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    #chatbot-toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 24px;
+      padding: 0.6rem 1rem;
+      border-radius: 50%;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
 </head>
 <body>
+  <div class="content-wrapper">
     <header>
-        <h1><i class="fas fa-robot"></i> AI Diet Planner</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="appointment.html"><i class="fas fa-calendar-check"></i> Appointment</a></li>
-                <li><a href="diet-plan.html"><i class="fas fa-utensils"></i> Diet Plan</a></li>
-                <li><a href="set-remainder.html"><i class="fas fa-bell"></i> Set Reminders</a></li>
-                <li><a href="schedule.html"><i class="fas fa-clock"></i> Schedule</a></li>
-                <li><a href="emergency.html"><i class="fas fa-exclamation-triangle"></i> Emergency</a></li>
-            </ul>
-        </nav>
+      <h1>AI Health Assistance System</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="appointment.html">Appointment</a></li>
+          <li><a href="diet-plan.html">Diet-plan</a></li>
+          <li><a href="set-remainder.html">Set Reminders</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="emergency.html">Emergency</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h2>Get Your Personalized AI Diet Plan</h2>
-            <a href="diet-plan.html" class="cta-button">Generate Plan Now</a>
-        </section>
+      <section class="features">
+        <div class="feature">
+          <h3>AI Assistance</h3>
+          <p>Get personalized health tips and diet plans.</p>
+        </div>
+        <div class="feature">
+          <h3>Schedule & Reminders</h3>
+          <p>Never miss an appointment or medication.</p>
+        </div>
+        <div class="feature">
+          <h3>Emergency Assistance</h3>
+          <p>Quick help during emergencies.</p>
+        </div>
+      </section>
     </main>
+  </div>
 
-    <footer>
-        <p>&copy; 2023 AI Diet Planner | Powered by OpenAI</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 AI Health Assistance. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Chatbot -->
+  <div id="chatbot">
+    <div id="chatbot-header">Health Chatbot</div>
+    <div id="chatbot-messages">
+      <p class="bot-message">Hello! I am here to help you with basic medicines. Please tell me your age.</p>
+    </div>
+    <div id="chatbot-input">
+      <textarea id="user-input" rows="1" placeholder="Type here..."></textarea>
+      <button id="chatbot-button">Send</button>
+    </div>
+  </div>
+  <button id="chatbot-toggle-button">💬</button>
+
+  <script>
+    const chatbot = document.getElementById('chatbot');
+    const toggleButton = document.getElementById('chatbot-toggle-button');
+    const messages = document.getElementById('chatbot-messages');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('chatbot-button');
+
+    let userAge = null;
+
+    const symptomsToMedicines = {
+      cold: { adult: "Paracetamol or Cetirizine", child: "Acetaminophen or Diphenhydramine" },
+      headache: { adult: "Ibuprofen or Aspirin", child: "Acetaminophen" },
+      fever: { adult: "Paracetamol or Tylenol", child: "Acetaminophen" },
+      "stomach pain": { adult: "Antacid or Buscopan", child: "Simethicone" },
+      allergy: { adult: "Loratadine or Cetirizine", child: "Diphenhydramine" },
+      cough: { adult: "Dextromethorphan or Codeine", child: "Honey and Lemon" },
+      diarrhea: { adult: "Loperamide", child: "Oral rehydration solution" },
+      nausea: { adult: "Ondansetron", child: "Dimenhydrinate" },
+      chest_pain: { adult: "Nitroglycerin or Aspirin", child: "Emergency help required" },
+      fatigue: { adult: "B Vitamins or Iron supplements", child: "Vitamin C" }
+    };
+
+    const medicineSchedule = (medicine, age) => {
+      if (age < 18) {
+        return `Recommended for children: ${medicine} (1 dose every 4 hours if necessary.)`;
+      } else {
+        return `Recommended for adults: ${medicine} (1 dose every 6 hours if necessary.)`;
+      }
+    };
+
+    toggleButton.addEventListener('click', () => {
+      chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
+    });
+
+    sendButton.addEventListener('click', () => {
+      const userMessage = userInput.value.trim();
+      if (!userMessage) return;
+
+      const userMessageElement = document.createElement('p');
+      userMessageElement.classList.add('user-message');
+      userMessageElement.textContent = userMessage;
+      messages.appendChild(userMessageElement);
+
+      let response = "";
+
+      if (!userAge && /^\d+$/.test(userMessage)) {
+        userAge = parseInt(userMessage);
+        response = "Thank you! Please describe your symptoms (e.g., headache, fever, cough, etc.).";
+      } else if (userAge !== null) {
+        const ageGroup = userAge < 18 ? 'child' : 'adult';
+        let found = false;
+        for (const symptom in symptomsToMedicines) {
+          if (userMessage.toLowerCase().includes(symptom)) {
+            const medicine = symptomsToMedicines[symptom][ageGroup];
+            response = `💊 ${medicineSchedule(medicine, userAge)}`;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          response = "Sorry, I couldn't identify your symptoms. Please try again with keywords like fever, cough, headache, etc.";
+        }
+      } else {
+        response = "Please enter your age first.";
+      }
+
+      const botMessageElement = document.createElement('p');
+      botMessageElement.classList.add('bot-message');
+      botMessageElement.textContent = response;
+      messages.appendChild(botMessageElement);
+
+      messages.scrollTop = messages.scrollHeight;
+      userInput.value = '';
+    });
+  </script>
 </body>
 </html>
